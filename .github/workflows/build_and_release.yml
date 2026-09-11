@@ -1,0 +1,47 @@
+name: Build C++ Core and Package Add-on
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers when you push a tag like v2.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build C++ Core Engine
+      run: cmake --build build --config Release
+
+    - name: Move Binary into Python Folder
+      run: |
+        move build\Release\mwrt_core.dll mwrt_pro\mwrt_core.dll
+
+    - name: Create Add-on ZIP Archive
+      shell: powershell
+      run: |
+        Compress-Archive -Path mwrt_pro -DestinationPath mwrt_pro.zip
+
+    - name: Create GitHub Release and Upload Asset
+      uses: softprops/action-gh-release@v2
+      with:
+        files: mwrt_pro.zip
+        body: |
+          ## 🚀 Moderate Weight Reduction Tools Pro (MWRT Pro) ${{ github.ref_name }}
+          Automatically compiled and packaged via GitHub Actions.
+          
+          ### 🔧 Installation Guide
+          1. Download `mwrt_pro.zip` from Assets below.
+          2. Open Blender 4.x > Preferences > Add-ons > Install...
+          3. Select `mwrt_pro.zip` and enable it.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
