@@ -1,0 +1,18 @@
+# Pythonキャッシュ
+**/__pycache__/
+*.pyc
+
+# OSの一時ファイル
+.DS_Store
+Thumbs.db
+
+# C++/ビルド関連（将来用）
+*.obj
+*.o
+*.pyd
+*.dll
+*.so
+
+# Blenderの一時ファイル
+*.blend1
+*.blend2
