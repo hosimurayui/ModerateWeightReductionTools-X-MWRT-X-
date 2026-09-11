@@ -33,7 +33,7 @@ By offloading heavy geometric and memory operations from Python to a custom **na
 
 ## 🔧 Installation Guide
 
-1. Download the pre-compiled **`mwrt_pro.zip`** from the [Latest GitHub Releases](https://github.com) page.
+1. Download the pre-compiled **`mwrt_pro.zip`** from the [Latest GitHub Releases](https://github.com/hosimurayui/ModerateWeightReductionTools-X-MWRT-X-/releases/tag/v2.0.0 page)
 2. Open Blender 4.x and navigate to `Edit > Preferences > Add-ons`.
 3. Click `Install...` at the top right, select the downloaded `mwrt_pro.zip`, and check the box to enable it.
 4. Open the 3D Viewport sidebar by pressing **`N`** and select the **MWRT Pro** tab.
