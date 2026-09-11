@@ -13,21 +13,27 @@ bl_info = {
 
 import bpy
 from . import properties
+from . import operators_texture
+from . import operators_anim
+from . import ui_panel
 
-# List of modules to register
+# Add all submodule components to the list
 modules = [
     properties,
+    operators_texture,
+    operators_anim,
+    ui_panel,
 ]
 
 def register():
     for module in modules:
         module.register()
-    print("MWRT Pro: Add-on successfully registered (Blender 4.x)")
+    print("MWRT Pro: All modules successfully registered (Blender 4.x)")
 
 def unregister():
     for module in reversed(modules):
         module.unregister()
-    print("MWRT Pro: Add-on unregistered")
+    print("MWRT Pro: Add-on successfully unregistered")
 
 if __name__ == "__main__":
     register()
